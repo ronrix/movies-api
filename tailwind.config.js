@@ -12,8 +12,6 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      poppins: ["var(--font-poppins)"],
-      nunito: ["var(--font-nunito)"],
       colors: {
         primary: '#032541',
       }
