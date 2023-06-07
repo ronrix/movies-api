@@ -1,9 +1,10 @@
 "use client";
-import { Typography, Grid } from "@mui/material";
+import { useState } from "react";
+import { Typography, Grid, Button } from "@mui/material";
 import styled from "@emotion/styled";
 import RateCircle from "@/app/components/rateCircle";
-import Link from "next/link";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import TrailerModal from "./components/trailer";
 
 const OverlayImage = styled.div<{ $url?: string }>`
   background-image: linear-gradient(
@@ -32,12 +33,6 @@ const OverlayImage = styled.div<{ $url?: string }>`
   z-index: -1;
 `;
 
-const LinkButton = styled(Link)({
-  "&:hover": {
-    color: "#032541",
-  },
-});
-
 type Props = {
   overview: string;
   production_companies: Array<{}>;
@@ -45,6 +40,8 @@ type Props = {
   rate: number;
   id: string;
   status: string;
+  title: string;
+  youtubeId: string;
 };
 export default function Main({
   overview,
@@ -53,10 +50,24 @@ export default function Main({
   rate,
   id,
   status,
+  title,
+  youtubeId,
 }: Props) {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const toggleOpen = () => {
+    setOpen((prev: boolean) => !prev);
+  };
+
   return (
     <>
       <OverlayImage $url={url} />
+      <TrailerModal
+        open={open}
+        handleClose={toggleOpen}
+        title={title}
+        youtubeId={youtubeId}
+      />
       <section className='mt-5'>
         <div className='my-5 flex items-center gap-3'>
           <RateCircle rate={rate * 10} size={70} />
@@ -64,10 +75,10 @@ export default function Main({
             User <span className='block'>Score</span>
           </Typography>
 
-          <LinkButton href={`movie/video/${id}`}>
+          <Button type='button' variant='text' onClick={toggleOpen}>
             <PlayArrowIcon />
             Play trailer
-          </LinkButton>
+          </Button>
         </div>
 
         <Typography variant='h5' className='font-bold my-5'>

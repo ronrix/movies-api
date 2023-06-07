@@ -17,7 +17,7 @@ export default async function MoviePage({ params }: any) {
 
   // fetching the movie details
   const data = await fetch(
-    `${movie_url}/movie/${id}?api_key=${process.env.API_KEY}`
+    `${movie_url}/movie/${id}?api_key=${process.env.API_KEY}&append_to_response=videos`
   );
   const res = await data.json();
 
@@ -57,6 +57,8 @@ export default async function MoviePage({ params }: any) {
             rate={res.vote_average}
             id={res.id}
             status={res.status}
+            title={res.title}
+            youtubeId={res.videos.results[0].key} // get the youtube key to display in iframe
           />
         </div>
       </section>

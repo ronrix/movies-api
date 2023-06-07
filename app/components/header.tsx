@@ -6,6 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import Link from "next/link";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -60,7 +61,7 @@ export default function Header() {
             component='div'
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Movie API
+            <Link href='/'>Movie API</Link>
           </Typography>
           <Search>
             <SearchIconWrapper>
