@@ -1,21 +1,12 @@
+import { Metadata } from "next";
 import "./globals.css";
-import { Poppins, Nunito } from "next/font/google";
+import Head from "next/head";
 
-// init fonts
-export const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
-});
-export const nunito = Nunito({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-nunito",
-});
-// end init fonts
-
-// metadata
-export const metadata = {
+/*
+ * Metadata
+ * this is set to the metadata of the html element
+ */
+export const metadata: Metadata = {
   title: "Movie API",
   description: "A personal prpoject | Movie Database API",
 };
@@ -28,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <head>
+      <Head>
         <title>Movie API</title>
         <meta
           name='description'
@@ -49,8 +40,8 @@ export default function RootLayout({
           crossOrigin='anonymous'
           referrerPolicy='no-referrer'
         />
-      </head>
-      <body className={poppins.className}>{children}</body>
+      </Head>
+      <body>{children}</body>
     </html>
   );
 }
