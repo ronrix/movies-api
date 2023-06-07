@@ -5,3 +5,5 @@ export const options = {
     Authorization: `Bearer ${process.env.API_KEY}`
   }
 };
+
+export const movie_img_url = 'https://image.tmdb.org/t/p/';

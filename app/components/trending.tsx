@@ -1,51 +1,42 @@
 "use client";
-import { useEffect, useState } from "react";
-import { options } from "../config/config";
 import VerticalCard from "./vertical-card";
+import Typography from "@mui/material/Typography";
 
-export default function Trending() {
-  const [latest, setLatest] = useState<any>();
+type Props = {
+  popular: Array<any>;
+};
 
-  useEffect(() => {
-    fetchLatests();
-  }, []);
-
-  const fetchLatests = async () => {
-    try {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/tv/latest",
-        options
-      );
-      const data = response.json();
-
-      //   set the data to the state variable
-      setLatest(data);
-      console.log(data);
-    } catch (error) {
-      console.log("Error fetching data: " + error);
-    }
-  };
-
+export default function Trending(props: Props) {
+  const { popular } = props;
   return (
     <section className='mt-10 w-full container mx-auto'>
       <div className='flex gap-2'>
-        <h3 className='font-bold text-2xl'>Latest</h3>
+        <Typography variant='h6' className='font-bold'>
+          Popular
+        </Typography>
 
-        <div className='flex items-center border border-black rounded-full gap-3 p-0 m-0 font-bold'>
-          <div className='bg-primary rounded-full px-3 m-0'>
-            <span className='bg-gradient-to-r from-[#16CCBA] to-blue-500 bg-clip-text text-transparent'>
-              Today
-            </span>
-          </div>
-          <span className='pr-3'>This Week</span>
+        <div className='bg-primary rounded-full px-3 m-0 flex items-center'>
+          <span className='bg-gradient-to-r from-[#16CCBA] to-blue-500 bg-clip-text text-transparent'>
+            Movies
+          </span>
         </div>
       </div>
 
       {/* latests movies - cards */}
-      <div className='mt-5 flex items-center gap-5'>
-        {Array.from([0, 0, 0]).map((a, id) => {
-          return <VerticalCard key={id} />;
-        })}
+      <div className='my-10 flex items-start gap-5 overflow-x-scroll'>
+        {popular &&
+          popular.map((movie: Object) => {
+            return (
+              <VerticalCard
+                key={movie.id}
+                rate={movie.vote_average * 10}
+                poster_path={movie.poster_path}
+                title={movie.title}
+                movie_date={movie.release_date}
+                id={movie.id}
+              />
+            );
+          })}
       </div>
     </section>
   );
