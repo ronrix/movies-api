@@ -1,7 +1,7 @@
 import Header from "@/app/components/header";
 import { Metadata } from "next";
 import "../globals.css";
-import Head from "next/head";
+import Footer from "../components/footer";
 
 /*
  * Metadata
@@ -26,9 +26,8 @@ export default function MovieLayout({
   return (
     <>
       <Header />
-      <section className=''>
-        <div>{children}</div>
-      </section>
+      <section>{children}</section>
+      <Footer />
     </>
   );
 }

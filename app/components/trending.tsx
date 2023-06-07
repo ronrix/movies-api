@@ -23,9 +23,9 @@ export default function Trending(props: Props) {
       </div>
 
       {/* latests movies - cards */}
-      <div className='my-10 flex items-start gap-5 overflow-x-scroll'>
+      <div className='my-10 flex items-start gap-5 overflow-x-auto'>
         {popular &&
-          popular.map((movie: Object) => {
+          popular.map((movie: any) => {
             return (
               <VerticalCard
                 key={movie.id}
