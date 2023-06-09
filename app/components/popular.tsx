@@ -30,7 +30,7 @@ const HeroImage = styled("div")({
 type Props = {
   popular: Array<any>;
 };
-export default function Main({ popular }: Props) {
+export default function Popular({ popular }: Props) {
   return (
     <main className='min-h-screen flex flex-col items-center'>
       <section
@@ -60,9 +60,10 @@ export default function Main({ popular }: Props) {
           >
             <TextField
               fullWidth
+              variant='filled'
+              className='bg-white'
               label='Search'
               id='search'
-              sx={{ backgroundColor: "#fff" }}
             />
           </Box>
           <SearchButton
