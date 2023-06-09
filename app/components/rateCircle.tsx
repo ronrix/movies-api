@@ -11,7 +11,7 @@ export default function RateCircle({ rate, size }: Props) {
       className={`bg-primary rounded-full flex items-center justify-center relative`}
       style={{ width: size + "px", height: size + "px" }}
     >
-      <Typography component='p' className='text-white flex text-sm'>
+      <Typography component='p' className='text-white flex text-[10px]'>
         {rate.toFixed(1)}
         <span className='text-[10px]'>%</span>
       </Typography>

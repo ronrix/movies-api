@@ -1,14 +1,17 @@
 import Footer from "./components/footer";
 import Header from "./components/header";
-import Main from "./components/main";
+import NowPlaying from "./components/now-playing";
+import Popular from "./components/popular";
+import { movie_url } from "./config/config";
 
 export default async function Home() {
   const popular: any = await getData();
-  console.log(popular.results);
+  const nowPlaying: any = await getNowPlaying();
   return (
     <>
       <Header />
-      <Main popular={popular.results} />
+      <Popular popular={popular.results} />
+      <NowPlaying nowPlaying={nowPlaying.results} />
       <Footer />
     </>
   );
@@ -19,9 +22,21 @@ export default async function Home() {
  */
 async function getData() {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}`
+    `${movie_url}/movie/popular?api_key=${process.env.API_KEY}`
   );
 
+  // handle errors
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+async function getNowPlaying() {
+  const res = await fetch(
+    `${movie_url}/movie/now_playing?api_key=${process.env.API_KEY}`
+  );
   // handle errors
   if (!res.ok) {
     throw new Error("Failed to fetch data");
