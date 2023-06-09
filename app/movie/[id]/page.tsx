@@ -58,7 +58,7 @@ export default async function MoviePage({ params }: any) {
             id={res.id}
             status={res.status}
             title={res.title}
-            youtubeId={res.videos.results[0].key} // get the youtube key to display in iframe
+            youtubeId={res.videos.results[0]?.key} // get the youtube key to display in iframe
           />
         </div>
       </section>
