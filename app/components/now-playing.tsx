@@ -7,7 +7,7 @@ type Props = {
 };
 export default function NowPlaying({ nowPlaying }: Props) {
   return (
-    <main className='w-full container mx-auto mt-10'>
+    <main className='w-full container mx-auto mt-10 p-2'>
       <div className='flex gap-2'>
         <Typography variant='h6' className='font-bold'>
           Now Playing

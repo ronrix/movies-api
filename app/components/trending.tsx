@@ -9,7 +9,7 @@ type Props = {
 export default function Trending(props: Props) {
   const { popular } = props;
   return (
-    <section className='mt-10 w-full container mx-auto'>
+    <section className='mt-10 w-full container mx-auto p-2'>
       <div className='flex gap-2'>
         <Typography variant='h6' className='font-bold'>
           Popular

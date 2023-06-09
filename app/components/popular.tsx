@@ -54,7 +54,7 @@ export default function Popular({ popular }: Props) {
         <form action='' className='z-10 mt-10 flex gap-2'>
           <Box
             sx={{
-              width: 500,
+              maxwidth: 500,
               maxWidth: "100%",
             }}
           >
@@ -66,13 +66,8 @@ export default function Popular({ popular }: Props) {
               id='search'
             />
           </Box>
-          <SearchButton
-            type='submit'
-            // variant='contained'
-            endIcon={<SearchIcon />}
-            arial-label='search button'
-          >
-            Search
+          <SearchButton type='submit' arial-label='search button'>
+            <SearchIcon />
           </SearchButton>
         </form>
       </section>

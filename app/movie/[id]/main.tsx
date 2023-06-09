@@ -4,7 +4,7 @@ import { Typography, Grid, Button } from "@mui/material";
 import styled from "@emotion/styled";
 import RateCircle from "@/app/components/rateCircle";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import TrailerModal from "./components/trailer";
+import TrailerModal from "../../components/trailer";
 
 const OverlayImage = styled.div<{ $url?: string }>`
   background-image: linear-gradient(
@@ -65,7 +65,6 @@ export default function Main({
       <TrailerModal
         open={open}
         handleClose={toggleOpen}
-        title={title}
         youtubeId={youtubeId}
       />
       <section className='mt-5'>

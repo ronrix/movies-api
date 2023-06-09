@@ -41,7 +41,7 @@ export default function VerticalCard(props: Props) {
         >
           {title}
         </Typography>
-        <Typography variant='p' className='text-gray-500 text-sm mt-5'>
+        <Typography variant='body1' className='text-gray-500 text-sm mt-5'>
           {movie_date}
         </Typography>
       </Card>
