@@ -52,7 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Header() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, position: "sticky", top: 0, zIndex: 20 }}>
       <AppBar position='static' sx={{ backgroundColor: "#032541" }}>
         <Toolbar>
           <Typography
@@ -60,8 +60,14 @@ export default function Header() {
             noWrap
             component='div'
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            className='font-bold'
           >
-            <Link href='/'>Movie API</Link>
+            <Link href='/'>
+              Movie{" "}
+              <span className='bg-gradient-to-r from-[#16CCBA] to-blue-500 bg-clip-text text-transparent'>
+                API
+              </span>
+            </Link>
           </Typography>
           <Search>
             <SearchIconWrapper>
